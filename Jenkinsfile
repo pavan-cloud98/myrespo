@@ -3,27 +3,15 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/pavan-cloud98/myrespo.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'npm install'
             }
         }
 
-        stage('Build Application') {
-            steps {
-                sh 'npm run build'
-            }
-        }
-
         stage('Run Application') {
             steps {
-                sh 'pm2 restart app || pm2 start app.js'
+                sh 'node app.js'
             }
         }
 
